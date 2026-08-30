@@ -1,0 +1,91 @@
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0c0e0f;
+  --surface: #141618;
+  --surface2: #1c1f21;
+  --surface3: #232729;
+  --border: rgba(255, 255, 255, 0.07);
+  --border2: rgba(255, 255, 255, 0.13);
+  --accent: #b8ff57;
+  --accent2: #57d4ff;
+  --accent3: #ff9f57;
+  --red: #ff6b6b;
+  --text: #f0ede8;
+  --text2: #8a8784;
+  --text3: #4a4846;
+  --background: var(--bg);
+  --foreground: var(--text);
+  --card: var(--surface);
+  --card-foreground: var(--text);
+  --popover: var(--surface);
+  --popover-foreground: var(--text);
+  --primary: var(--accent);
+  --primary-foreground: #0b0d0e;
+  --secondary: var(--surface2);
+  --secondary-foreground: var(--text);
+  --muted: var(--surface2);
+  --muted-foreground: var(--text2);
+  --destructive: var(--red);
+  --input: var(--surface2);
+  --ring: var(--accent);
+  --radius: 0.75rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% -10%, rgba(184, 255, 87, 0.08), transparent 30%),
+    radial-gradient(circle at 85% 0%, rgba(87, 212, 255, 0.07), transparent 28%),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading {
+  font-family: var(--font-heading), system-ui, sans-serif;
+  letter-spacing: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+::selection {
+  background: rgba(184, 255, 87, 0.28);
+}
+
+.lp-scrollbar {
+  scrollbar-color: var(--surface3) transparent;
+}
+
+.lp-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.lp-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--surface3);
+  border-radius: 999px;
+  border: 3px solid var(--bg);
+}
