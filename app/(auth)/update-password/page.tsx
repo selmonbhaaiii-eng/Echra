@@ -11,6 +11,13 @@ export default function UpdatePasswordPage() {
   const [message, setMessage] = useState("");
   const router = useRouter();
 
+  useEffect(() => {
+    const supabase = createClient();
+    // This forces Supabase to instantly parse any secure token hash in the URL (like an invite token)
+    // and store it as a secure session cookie BEFORE the user submits the form.
+    supabase.auth.getSession();
+  }, []);
+
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("loading");
