@@ -69,7 +69,7 @@ export async function sendReminderEmail(params: ReminderEmailParams) {
 
   try {
     await resend.emails.send({
-      from: "Echra <notifications@echra.app>",
+      from: "Echra <notifications@resend.dev>",
       to: params.to,
       subject,
       html: emailHtml,

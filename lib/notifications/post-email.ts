@@ -25,7 +25,7 @@ export async function sendPostReadyEmail(params: PostReadyEmailParams) {
     : "";
 
   await resend.emails.send({
-    from: "Echra <noreply@echra.app>",
+    from: "Echra <notifications@resend.dev>",
     to: params.to,
     subject: `New post ready - ${params.businessName}`,
     html: `

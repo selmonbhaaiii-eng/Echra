@@ -50,7 +50,7 @@ export async function sendPostGeneratedEmail(params: {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Echra <notifications@echra.app>',
+      from: 'Echra <notifications@resend.dev>',
       to: clientEmail,
       subject: `New post ready — ${businessName}`,
       html: emailTemplate,
