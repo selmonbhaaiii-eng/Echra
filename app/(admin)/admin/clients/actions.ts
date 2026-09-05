@@ -45,7 +45,7 @@ export async function inviteClient(
   }
 
   const service = createServiceRoleClient();
-  const redirectTo = `${process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"}/auth/callback?next=/update-password`;
+  const redirectTo = `${process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"}/auth/confirm`;
   const { data: inviteData, error: inviteError } = await service.auth.admin.inviteUserByEmail(
     email,
     {
