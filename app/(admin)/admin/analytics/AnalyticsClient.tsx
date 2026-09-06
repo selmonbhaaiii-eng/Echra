@@ -139,40 +139,40 @@ export function AnalyticsClient({
       {/* Page Header */}
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-sm font-bold uppercase tracking-widest text-lp-accent">Admin</p>
-          <h1 className="mt-2 font-heading text-4xl font-extrabold text-lp-text">Analytics</h1>
-          <p className="mt-2 text-sm text-lp-text2">
+          <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-lp-accent">Admin</p>
+          <h1 className="mt-1 sm:mt-2 font-heading text-2xl sm:text-4xl font-extrabold text-lp-text">Analytics</h1>
+          <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-lp-text2">
             Monitor product usage, AI costs, customer retention risk, and real-time operations.
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           <button
             onClick={handleRefresh}
             disabled={isPending}
-            className="flex items-center gap-2 rounded-lg bg-lp-accent px-4 py-1.5 text-sm font-bold text-lp-bg transition hover:bg-lp-accent/90 disabled:opacity-50"
+            className="flex items-center gap-2 rounded-lg bg-lp-accent px-3.5 py-1.5 text-xs sm:text-sm font-bold text-lp-bg transition hover:bg-lp-accent/90 disabled:opacity-50"
           >
-            <RefreshCw className={`size-4 ${isPending ? "animate-spin" : ""}`} />
+            <RefreshCw className={`size-3.5 sm:size-4 ${isPending ? "animate-spin" : ""}`} />
             Refresh Data
           </button>
-          <div className="flex items-center gap-2 text-xs text-lp-text3 bg-lp-surface border border-lp-border px-3 py-1.5 rounded-lg">
+          <div className="flex items-center gap-2 text-xs text-lp-text3 bg-lp-surface border border-lp-border px-2.5 sm:px-3 py-1.5 rounded-lg">
             <span>Last updated: {lastRefreshed.toLocaleTimeString()}</span>
           </div>
         </div>
       </div>
 
       {/* Section 1 — Overview Stats Row */}
-      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+      <section className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 xl:grid-cols-6">
         {stats.map((stat, idx) => {
           const Icon = iconMap[stat.icon] || Zap;
           return (
             <div key={idx} className="overflow-hidden rounded-xl border border-lp-border bg-lp-surface">
               <div className={`h-0.5 ${stat.accent}`} />
-              <div className="p-5">
-                <div className="mb-4 flex size-9 items-center justify-center rounded-lg bg-lp-surface2 text-lp-text2">
-                  <Icon className="size-4" />
+              <div className="p-3.5 sm:p-5">
+                <div className="mb-2 sm:mb-4 flex size-8 sm:size-9 items-center justify-center rounded-lg bg-lp-surface2 text-lp-text2">
+                  <Icon className="size-3.5 sm:size-4" />
                 </div>
-                <p className="text-sm font-medium text-lp-text2 truncate">{stat.label}</p>
-                <p className="mt-3 font-heading text-3xl font-bold text-lp-text">{stat.value}</p>
+                <p className="text-xs sm:text-sm font-medium text-lp-text2 truncate">{stat.label}</p>
+                <p className="mt-1.5 sm:mt-3 font-heading text-xl sm:text-3xl font-bold text-lp-text truncate">{stat.value}</p>
               </div>
             </div>
           );
@@ -182,10 +182,10 @@ export function AnalyticsClient({
       {/* Main Grid: Section 2 & Section 5 */}
       <section className="grid gap-6 xl:grid-cols-[2fr_1fr]">
         {/* Section 2 — Customer Usage Table */}
-        <div className="rounded-xl border border-lp-border bg-lp-surface p-6 overflow-hidden flex flex-col">
-          <h2 className="font-heading text-2xl font-bold text-lp-text mb-5">Customer Usage — {new Date().toLocaleString('default', { month: 'long', year: 'numeric' })}</h2>
-          <div className="flex-1 overflow-x-auto">
-            <table className="w-full border-collapse text-left">
+        <div className="rounded-xl border border-lp-border bg-lp-surface p-4 sm:p-6 overflow-hidden flex flex-col">
+          <h2 className="font-heading text-xl sm:text-2xl font-bold text-lp-text mb-5">Customer Usage — {new Date().toLocaleString('default', { month: 'long', year: 'numeric' })}</h2>
+          <div className="flex-1 overflow-x-auto hide-scrollbar">
+            <table className="w-full min-w-[640px] border-collapse text-left whitespace-nowrap">
               <thead>
                 <tr className="border-b border-lp-border text-xs font-bold uppercase tracking-wider text-lp-text3">
                   <th className="pb-3 pr-4">Business</th>
@@ -227,9 +227,9 @@ export function AnalyticsClient({
         </div>
 
         {/* Section 5 — Churn Risk Alerts */}
-        <div className="rounded-xl border border-lp-border bg-lp-surface p-6 flex flex-col">
+        <div className="rounded-xl border border-lp-border bg-lp-surface p-4 sm:p-6 flex flex-col">
           <div className="mb-5 flex items-center justify-between">
-            <h2 className="font-heading text-2xl font-bold text-lp-text flex items-center gap-2">
+            <h2 className="font-heading text-xl sm:text-2xl font-bold text-lp-text flex items-center gap-2">
               <AlertTriangle className="size-5 text-orange-500" />
               Needs Attention
             </h2>
@@ -299,9 +299,9 @@ export function AnalyticsClient({
       {/* Grid: Section 3 & Section 4 */}
       <section className="grid gap-6 xl:grid-cols-[1fr_1fr]">
         {/* Section 3 — AI Cost Breakdown */}
-        <div className="rounded-xl border border-lp-border bg-lp-surface p-6 space-y-6 flex flex-col justify-between">
+        <div className="rounded-xl border border-lp-border bg-lp-surface p-4 sm:p-6 space-y-6 flex flex-col justify-between">
           <div>
-            <h2 className="font-heading text-2xl font-bold text-lp-text mb-5">AI Cost Breakdown</h2>
+            <h2 className="font-heading text-xl sm:text-2xl font-bold text-lp-text mb-5">AI Cost Breakdown</h2>
             <div className="space-y-4">
               {usages.map((u, idx) => {
                 const totalCost = costBreakdown.totalInr;
@@ -360,8 +360,8 @@ export function AnalyticsClient({
         </div>
 
         {/* Section 4 — Activity Feed */}
-        <div className="rounded-xl border border-lp-border bg-lp-surface p-6 flex flex-col">
-          <h2 className="font-heading text-2xl font-bold text-lp-text mb-5">Activity Feed</h2>
+        <div className="rounded-xl border border-lp-border bg-lp-surface p-4 sm:p-6 flex flex-col">
+          <h2 className="font-heading text-xl sm:text-2xl font-bold text-lp-text mb-5">Activity Feed</h2>
           <div className="flex-1 space-y-4 max-h-[360px] overflow-y-auto pr-1">
             {activities.length > 0 ? (
               activities.map((act) => {

@@ -11,6 +11,7 @@ import {
   LogOut,
   RadioTower,
   Users,
+  X,
   Zap,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
@@ -31,9 +32,11 @@ const settingsNav = [
 function NavSection({
   title,
   items,
+  onItemClick,
 }: {
   title: string;
   items: typeof mainNav;
+  onItemClick?: () => void;
 }) {
   const pathname = usePathname();
 
@@ -50,6 +53,7 @@ function NavSection({
             <Link
               key={item.href}
               href={item.href}
+              onClick={onItemClick}
               className={`flex h-9 items-center gap-2 rounded-lg px-3 text-sm font-medium transition ${
                 isActive
                   ? "bg-lp-accent/10 text-lp-accent"
@@ -66,7 +70,13 @@ function NavSection({
   );
 }
 
-export function AdminSidebar() {
+export function AdminSidebar({
+  isOpen = false,
+  onClose,
+}: {
+  isOpen?: boolean;
+  onClose?: () => void;
+}) {
   const router = useRouter();
 
   async function logout() {
@@ -77,20 +87,36 @@ export function AdminSidebar() {
   }
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-40 flex w-[220px] flex-col border-r border-lp-border bg-lp-surface px-3 py-4">
-      <Link href="/admin/clients" className="mb-8 flex items-center gap-3 px-2">
-        <div className="flex size-10 items-center justify-center rounded-lg bg-lp-accent text-lp-bg">
-          <Zap className="size-5 fill-current" />
-        </div>
-        <div>
-          <div className="font-heading text-lg font-extrabold text-lp-text">Echra</div>
-          <div className="text-xs text-lp-text2">GBP Content Engine</div>
-        </div>
-      </Link>
+    <aside
+      className={`fixed inset-y-0 left-0 z-50 flex w-[80vw] max-w-[280px] lg:w-[220px] flex-col border-r border-lp-border bg-lp-surface px-3 py-4 transition-transform duration-200 ease-in-out ${
+        isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full lg:translate-x-0"
+      }`}
+    >
+      <div className="mb-8 flex items-center justify-between px-2">
+        <Link href="/admin/clients" onClick={onClose} className="flex items-center gap-3">
+          <div className="flex size-10 items-center justify-center rounded-lg bg-lp-accent text-lp-bg">
+            <Zap className="size-5 fill-current" />
+          </div>
+          <div>
+            <div className="font-heading text-lg font-extrabold text-lp-text">Echra</div>
+            <div className="text-xs text-lp-text2">GBP Content Engine</div>
+          </div>
+        </Link>
+        {onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex size-8 items-center justify-center rounded-lg border border-lp-border bg-lp-surface2 text-lp-text2 transition hover:bg-lp-surface3 hover:text-lp-text lg:hidden"
+            aria-label="Close navigation menu"
+          >
+            <X className="size-4" />
+          </button>
+        )}
+      </div>
 
-      <div className="flex flex-1 flex-col gap-7">
-        <NavSection title="Main" items={mainNav} />
-        <NavSection title="Settings" items={settingsNav} />
+      <div className="flex flex-1 flex-col gap-7 overflow-y-auto">
+        <NavSection title="Main" items={mainNav} onItemClick={onClose} />
+        <NavSection title="Settings" items={settingsNav} onItemClick={onClose} />
       </div>
 
       <div className="space-y-3 border-t border-lp-border pt-4">

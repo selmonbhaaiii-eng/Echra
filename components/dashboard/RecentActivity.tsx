@@ -45,7 +45,7 @@ export function RecentActivity({ activities = [] }: { activities?: Activity[] })
   };
 
   return (
-    <div className="rounded-xl border border-lp-border bg-lp-surface p-6">
+    <div className="rounded-xl border border-lp-border bg-lp-surface p-4 sm:p-6">
       <h2 className="mb-4 font-heading text-xl font-bold text-lp-text">Recent Activity</h2>
       
       <div className="space-y-4">

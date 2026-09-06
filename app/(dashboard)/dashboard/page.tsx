@@ -151,9 +151,9 @@ export default async function DashboardPage() {
       {business && <AiActionsDashboard businessId={business.id} />}
 
       <section className="grid gap-6 xl:grid-cols-[1.5fr_1fr] mt-6">
-        <div className="rounded-xl border border-lp-border bg-lp-surface p-6">
+        <div className="rounded-xl border border-lp-border bg-lp-surface p-4 sm:p-6">
           <div className="mb-6 flex items-center justify-between">
-            <h2 className="font-heading text-2xl font-bold text-lp-text">Post Queue</h2>
+            <h2 className="font-heading text-xl sm:text-2xl font-bold text-lp-text">Post Queue</h2>
             <span className="rounded-full border border-lp-border bg-lp-surface2 px-2.5 py-1 text-xs font-bold text-lp-text2">
               {pendingPosts.length} pending
             </span>
@@ -190,14 +190,14 @@ export default async function DashboardPage() {
         </div>
 
         <div className="space-y-6">
-          <div className="rounded-xl border border-lp-border bg-lp-surface p-6">
-            <h2 className="font-heading text-2xl font-bold text-lp-text mb-6">GBP Health Score</h2>
+          <div className="rounded-xl border border-lp-border bg-lp-surface p-4 sm:p-6">
+            <h2 className="font-heading text-xl sm:text-2xl font-bold text-lp-text mb-6">GBP Health Score</h2>
             
-            <div className="flex items-center gap-6 mb-6">
-              <div className="relative flex size-24 items-center justify-center rounded-full border-[8px] border-lp-surface3">
-                <div className="absolute inset-[-8px] rounded-full border-[8px] border-lp-accent/20" />
+            <div className="flex items-center gap-4 sm:gap-6 mb-6">
+              <div className="relative flex size-20 sm:size-24 shrink-0 items-center justify-center rounded-full border-[6px] sm:border-[8px] border-lp-surface3">
+                <div className="absolute inset-[-6px] sm:inset-[-8px] rounded-full border-[6px] sm:border-[8px] border-lp-accent/20" />
                 <div className="text-center">
-                  <p className="font-heading text-3xl font-extrabold text-lp-text">
+                  <p className="font-heading text-2xl sm:text-3xl font-extrabold text-lp-text">
                     {(() => {
                       const ctx = business?.business_context as any || {};
                       let score = 0;
@@ -289,10 +289,10 @@ export default async function DashboardPage() {
             created_at: p.created_at ?? new Date().toISOString()
           }))} />
 
-          <div className="rounded-xl border border-lp-border bg-lp-surface p-6">
+          <div className="rounded-xl border border-lp-border bg-lp-surface p-4 sm:p-6">
             <div className="mb-4 flex items-center gap-2">
               <Gauge className="size-5 text-lp-accent2" />
-              <h2 className="font-heading text-2xl font-bold text-lp-text">Quick Generate</h2>
+              <h2 className="font-heading text-xl sm:text-2xl font-bold text-lp-text">Quick Generate</h2>
             </div>
             <p className="mb-5 text-sm leading-6 text-lp-text2">Create a post from a review, festival, or custom prompt.</p>
             <GeneratePostModal reviews={reviewOptions ?? []} occasions={occasions} />
@@ -300,10 +300,10 @@ export default async function DashboardPage() {
 
           <RecentActivity activities={recentActivities} />
 
-          <div className="rounded-xl border border-lp-border bg-lp-surface p-6">
+          <div className="rounded-xl border border-lp-border bg-lp-surface p-4 sm:p-6">
             <div className="mb-4 flex items-center gap-2">
               <Star className="size-5 text-lp-accent3" />
-              <h2 className="font-heading text-2xl font-bold text-lp-text">Recent Reviews</h2>
+              <h2 className="font-heading text-xl sm:text-2xl font-bold text-lp-text">Recent Reviews</h2>
             </div>
             <div className="space-y-3">
               {(reviews ?? []).slice(0, 3).length ? (

@@ -96,18 +96,18 @@ export function AutomationSettingsClient({
       )}
 
       {/* SECTION 1 - POST GENERATION */}
-      <div className="rounded-[12px] border border-[rgba(255,255,255,0.07)] bg-lp-surface p-6">
-        <div className="flex items-start justify-between">
+      <div className="rounded-[12px] border border-[rgba(255,255,255,0.07)] bg-lp-surface p-4 sm:p-6">
+        <div className="flex items-start justify-between gap-3">
           <div>
-            <div className="flex items-center gap-3">
-              <h3 className="font-heading text-lg font-bold text-lp-text">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+              <h3 className="font-heading text-base sm:text-lg font-bold text-lp-text">
                 Auto-generate posts from reviews
               </h3>
               <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-500">
                 Core Feature
               </span>
             </div>
-            <p className="mt-2 text-sm leading-relaxed text-lp-text2 max-w-xl">
+            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-lp-text2 max-w-xl">
               When a customer leaves a 4+ star review, we automatically write a post and add it to
               your approval queue. You approve before anything goes live.
             </p>
@@ -158,18 +158,18 @@ export function AutomationSettingsClient({
       </div>
 
       {/* SECTION 2 - SEASONAL POSTS */}
-      <div className="rounded-[12px] border border-[rgba(255,255,255,0.07)] bg-lp-surface p-6">
-        <div className="flex items-start justify-between">
+      <div className="rounded-[12px] border border-[rgba(255,255,255,0.07)] bg-lp-surface p-4 sm:p-6">
+        <div className="flex items-start justify-between gap-3">
           <div>
-            <div className="flex items-center gap-3">
-              <h3 className="font-heading text-lg font-bold text-lp-text">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+              <h3 className="font-heading text-base sm:text-lg font-bold text-lp-text">
                 Auto-draft seasonal posts
               </h3>
               <span className="rounded-full bg-blue-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-blue-500">
                 Recommended
               </span>
             </div>
-            <p className="mt-2 text-sm leading-relaxed text-lp-text2 max-w-xl">
+            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-lp-text2 max-w-xl">
               We automatically draft posts for Diwali, Eid, Christmas, Independence Day and other
               occasions 5 days before they happen. You approve before anything goes live on Google.
             </p>
@@ -223,18 +223,18 @@ export function AutomationSettingsClient({
       </div>
 
       {/* SECTION 3 - REVIEW REPLIES */}
-      <div className="rounded-[12px] border border-[rgba(255,255,255,0.07)] bg-lp-surface p-6">
-        <div className="flex items-start justify-between">
+      <div className="rounded-[12px] border border-[rgba(255,255,255,0.07)] bg-lp-surface p-4 sm:p-6">
+        <div className="flex items-start justify-between gap-3">
           <div>
-            <div className="flex items-center gap-3">
-              <h3 className="font-heading text-lg font-bold text-lp-text">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+              <h3 className="font-heading text-base sm:text-lg font-bold text-lp-text">
                 Auto-draft replies for new reviews
               </h3>
               <span className="rounded-full bg-orange-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-orange-500">
                 Saves time
               </span>
             </div>
-            <p className="mt-2 text-sm leading-relaxed text-lp-text2 max-w-xl">
+            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-lp-text2 max-w-xl">
               When any new review comes in, we automatically draft a reply and add it to your review
               inbox. You approve and copy before it goes to Google.
             </p>
@@ -294,21 +294,21 @@ export function AutomationSettingsClient({
       </div>
 
       {/* SECTION 4 - AUTOPILOT (LOCKED) */}
-      <div className="rounded-[12px] border border-[rgba(255,255,255,0.07)] bg-lp-surface p-6 opacity-50 relative overflow-hidden">
+      <div className="rounded-[12px] border border-[rgba(255,255,255,0.07)] bg-lp-surface p-4 sm:p-6 opacity-50 relative overflow-hidden">
         <div className="absolute top-6 right-6">
           <Lock className="size-5 text-lp-text3" />
         </div>
-        <div className="flex items-start justify-between pr-10">
+        <div className="flex items-start justify-between gap-3 pr-10">
           <div>
-            <div className="flex items-center gap-3">
-              <h3 className="font-heading text-lg font-bold text-lp-text">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+              <h3 className="font-heading text-base sm:text-lg font-bold text-lp-text">
                 Hands-Free Autopilot
               </h3>
               <span className="rounded-full bg-red-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-red-500">
                 Admin only
               </span>
             </div>
-            <p className="mt-2 text-sm leading-relaxed text-lp-text2 max-w-xl">
+            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-lp-text2 max-w-xl">
               Posts publish directly to Google without requiring your approval first. Contact us to
               enable this for your account.
             </p>

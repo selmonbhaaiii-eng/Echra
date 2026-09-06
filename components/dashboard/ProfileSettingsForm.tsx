@@ -63,9 +63,9 @@ export function ProfileSettingsForm({
   return (
     <div className="space-y-8 pb-12">
       {/* Completion Header */}
-      <div className="bg-lp-surface border border-lp-border rounded-xl p-6 flex items-center justify-between">
+      <div className="bg-lp-surface border border-lp-border rounded-xl p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
-          <div className="relative w-14 h-14 flex items-center justify-center">
+          <div className="relative size-12 sm:size-14 shrink-0 flex items-center justify-center">
             <svg className="w-full h-full transform -rotate-90">
               <circle
                 cx="28"
@@ -88,15 +88,15 @@ export function ProfileSettingsForm({
                 className={percent >= 100 ? "text-lp-accent text-emerald-500" : "text-lp-accent3 text-yellow-500"}
               />
             </svg>
-            <span className="absolute text-sm font-bold text-lp-text">{percent}%</span>
+            <span className="absolute text-xs sm:text-sm font-bold text-lp-text">{percent}%</span>
           </div>
           <div>
-            <h3 className="font-semibold text-lp-text">Your profile is {percent}% complete</h3>
-            <p className="text-sm text-lp-text2">More complete = better AI posts</p>
+            <h3 className="font-semibold text-lp-text text-sm sm:text-base">Your profile is {percent}% complete</h3>
+            <p className="text-xs sm:text-sm text-lp-text2">More complete = better AI posts</p>
           </div>
         </div>
-        <div className="text-sm">
-          {savingStatus === "saved" && <span className="text-lp-accent">Saved ✓</span>}
+        <div className="text-xs sm:text-sm self-end sm:self-center">
+          {savingStatus === "saved" && <span className="text-lp-accent font-medium">Saved ✓</span>}
           {savingStatus === "idle" && <span className="text-lp-text2">Unsaved changes</span>}
         </div>
       </div>

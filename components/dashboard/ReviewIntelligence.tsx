@@ -49,7 +49,7 @@ export function ReviewIntelligence({ businessId }: { businessId: string }) {
   if (!data || !data.insight) return null;
 
   return (
-    <div className="mt-8 rounded-xl border border-[rgba(255,255,255,0.05)] bg-gradient-to-br from-lp-surface to-lp-surface2 p-6 shadow-xl relative overflow-hidden">
+    <div className="mt-8 rounded-xl border border-[rgba(255,255,255,0.05)] bg-gradient-to-br from-lp-surface to-lp-surface2 p-4 sm:p-6 shadow-xl relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-lp-accent/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 pointer-events-none" />
 

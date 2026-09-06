@@ -135,37 +135,39 @@ function ReviewCard({ review, index }: { review: Review; index: number }) {
   const reputationRisk = extractedObj?.reputation_risk_type;
 
   return (
-    <article className="relative rounded-xl border border-lp-border bg-lp-surface p-5">
-      <div className="absolute right-4 top-4">
-        <StatusBadge review={review} />
-      </div>
-      <div className="flex items-start gap-3 pr-28">
-        {review.reviewer_avatar ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={review.reviewer_avatar}
-            alt=""
-            className="size-11 rounded-lg object-cover"
-          />
-        ) : (
-          <div
-            className="flex size-11 shrink-0 items-center justify-center rounded-lg text-sm font-bold text-lp-bg"
-            style={{
-              background:
-                index % 2 === 0
-                  ? "linear-gradient(135deg, #B8FF57, #57D4FF)"
-                  : "linear-gradient(135deg, #FF9F57, #B8FF57)",
-            }}
-          >
-            {initials(review.reviewer_name)}
+    <article className="rounded-xl border border-lp-border bg-lp-surface p-4 sm:p-5">
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex items-start gap-3 min-w-0">
+          {review.reviewer_avatar ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={review.reviewer_avatar}
+              alt=""
+              className="size-10 sm:size-11 rounded-lg object-cover shrink-0"
+            />
+          ) : (
+            <div
+              className="flex size-10 sm:size-11 shrink-0 items-center justify-center rounded-lg text-sm font-bold text-lp-bg"
+              style={{
+                background:
+                  index % 2 === 0
+                    ? "linear-gradient(135deg, #B8FF57, #57D4FF)"
+                    : "linear-gradient(135deg, #FF9F57, #B8FF57)",
+              }}
+            >
+              {initials(review.reviewer_name)}
+            </div>
+          )}
+          <div className="min-w-0">
+            <h3 className="font-bold text-lp-text truncate text-sm sm:text-base">{review.reviewer_name ?? "Anonymous"}</h3>
+            <p className="mt-0.5 text-xs text-lp-text3">{relativeTime(review.review_date)}</p>
+            <div className="mt-1.5">
+              <Stars rating={rating} />
+            </div>
           </div>
-        )}
-        <div>
-          <h3 className="font-bold text-lp-text">{review.reviewer_name ?? "Anonymous"}</h3>
-          <p className="mt-1 text-xs text-lp-text3">{relativeTime(review.review_date)}</p>
-          <div className="mt-2">
-            <Stars rating={rating} />
-          </div>
+        </div>
+        <div className="shrink-0">
+          <StatusBadge review={review} />
         </div>
       </div>
 
@@ -388,7 +390,7 @@ export function ReviewsPage({ reviews, business }: { reviews: Review[]; business
         </div>
       ) : null}
 
-      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <section className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
         {[
           { label: "Total Reviews", value: business.total_reviews ?? reviews.length, accent: "bg-lp-accent" },
           { label: "Average Rating", value: business.avg_rating ?? "--", accent: "bg-lp-accent2" },
@@ -397,9 +399,9 @@ export function ReviewsPage({ reviews, business }: { reviews: Review[]; business
         ].map((stat) => (
           <div key={stat.label} className="overflow-hidden rounded-xl border border-lp-border bg-lp-surface">
             <div className={`h-0.5 ${stat.accent}`} />
-            <div className="p-5">
-              <p className="text-sm font-medium text-lp-text2">{stat.label}</p>
-              <p className="mt-3 font-heading text-3xl font-bold text-lp-text">{stat.value}</p>
+            <div className="p-3.5 sm:p-5">
+              <p className="text-xs sm:text-sm font-medium text-lp-text2 truncate">{stat.label}</p>
+              <p className="mt-2 sm:mt-3 font-heading text-2xl sm:text-3xl font-bold text-lp-text truncate">{stat.value}</p>
             </div>
           </div>
         ))}
@@ -407,7 +409,7 @@ export function ReviewsPage({ reviews, business }: { reviews: Review[]; business
 
       {business && <ReviewIntelligence businessId={business.id} />}
 
-      <section className="flex flex-wrap items-center gap-3 rounded-xl border border-lp-border bg-lp-surface p-3 mt-8">
+      <section className="flex flex-wrap items-center gap-2.5 sm:gap-3 rounded-xl border border-lp-border bg-lp-surface p-3 mt-8">
         {[
           ["unreplied", "Inbox"],
           ["drafts", "Saved Drafts"],
@@ -420,7 +422,7 @@ export function ReviewsPage({ reviews, business }: { reviews: Review[]; business
             key={value}
             type="button"
             onClick={() => setFilter(value as Filter)}
-            className={`h-9 rounded-lg px-3 text-sm font-bold transition ${
+            className={`h-9 rounded-lg px-3 text-xs sm:text-sm font-bold transition ${
               filter === value
                 ? "bg-lp-accent text-lp-bg"
                 : "border border-lp-border bg-lp-surface2 text-lp-text2 hover:bg-lp-surface3 hover:text-lp-text"
@@ -429,8 +431,8 @@ export function ReviewsPage({ reviews, business }: { reviews: Review[]; business
             {label}
           </button>
         ))}
-        <label className="ml-auto flex h-9 min-w-[260px] items-center gap-2 rounded-lg border border-lp-border bg-lp-surface2 px-3">
-          <Search className="size-4 text-lp-text3" />
+        <label className="flex h-9 w-full sm:w-auto sm:min-w-[220px] lg:ml-auto items-center gap-2 rounded-lg border border-lp-border bg-lp-surface2 px-3">
+          <Search className="size-4 text-lp-text3 shrink-0" />
           <input
             value={search}
             onChange={(event) => setSearch(event.target.value)}

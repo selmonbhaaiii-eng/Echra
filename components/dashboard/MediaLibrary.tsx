@@ -235,7 +235,7 @@ export function MediaLibrary({ businessId }: { businessId: string }) {
   return (
     <div className="space-y-8">
       {/* Upload Section */}
-      <div className="grid md:grid-cols-12 gap-6 bg-lp-surface border border-lp-border rounded-xl p-6">
+      <div className="grid md:grid-cols-12 gap-6 bg-lp-surface border border-lp-border rounded-xl p-4 sm:p-6">
         <div 
           className={`md:col-span-7 border-2 border-dashed rounded-xl flex flex-col items-center justify-center p-8 transition min-h-[220px] ${
             dragActive ? "border-lp-accent bg-lp-accent/5" : "border-lp-border hover:border-lp-border2 bg-lp-bg/20"

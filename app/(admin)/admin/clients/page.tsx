@@ -32,9 +32,9 @@ function StatCard({
   return (
     <div className="overflow-hidden rounded-xl border border-lp-border bg-lp-surface">
       <div className={`h-0.5 ${statAccent[accentIndex]}`} />
-      <div className="p-5">
-        <p className="text-sm font-medium text-lp-text2">{label}</p>
-        <p className="mt-3 font-heading text-3xl font-bold text-lp-text">{value}</p>
+      <div className="p-3.5 sm:p-5">
+        <p className="text-xs sm:text-sm font-medium text-lp-text2 truncate">{label}</p>
+        <p className="mt-2 font-heading text-xl sm:text-3xl font-bold text-lp-text truncate">{value}</p>
       </div>
     </div>
   );
@@ -63,16 +63,16 @@ export default async function ClientsPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-sm font-bold uppercase tracking-widest text-lp-accent">Admin</p>
-          <h1 className="mt-2 font-heading text-4xl font-extrabold text-lp-text">Clients</h1>
-          <p className="mt-2 text-sm text-lp-text2">
+          <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-lp-accent">Admin</p>
+          <h1 className="mt-1 sm:mt-2 font-heading text-2xl sm:text-4xl font-extrabold text-lp-text">Clients</h1>
+          <p className="mt-1 sm:mt-2 text-xs sm:text-sm text-lp-text2">
             All connected businesses, billing signals, and posting health in one place.
           </p>
         </div>
         <AddClientModal />
       </div>
 
-      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+      <section className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-3 xl:grid-cols-5">
         <StatCard label="Active Clients" value={String(activeClients)} accentIndex={0} />
         <StatCard label="Total GBPs" value={String(totalGbps)} accentIndex={1} />
         <StatCard label="Monthly MRR" value={`₹${monthlyMrr.toLocaleString()}`} accentIndex={2} />

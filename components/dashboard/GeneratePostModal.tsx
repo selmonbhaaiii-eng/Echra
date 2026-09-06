@@ -215,30 +215,30 @@ export function GeneratePostModal({
                   <label className="text-xs font-bold uppercase tracking-widest text-lp-text3">
                     Source
                   </label>
-                  <div className="flex gap-2">
+                  <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
                     <button
                       onClick={() => setSourceType("review")}
-                      className={`flex-1 rounded-lg border py-2 text-sm font-bold transition ${
+                      className={`rounded-lg border py-2 px-1 text-xs sm:text-sm font-bold transition text-center ${
                         sourceType === "review"
                           ? "border-lp-accent bg-lp-accent/10 text-lp-accent"
                           : "border-lp-border bg-lp-surface hover:bg-lp-surface2 text-lp-text2"
                       }`}
                     >
-                      Customer Review
+                      <span className="hidden sm:inline">Customer </span>Review
                     </button>
                     <button
                       onClick={() => setSourceType("seasonal")}
-                      className={`flex-1 rounded-lg border py-2 text-sm font-bold transition ${
+                      className={`rounded-lg border py-2 px-1 text-xs sm:text-sm font-bold transition text-center ${
                         sourceType === "seasonal"
                           ? "border-lp-accent bg-lp-accent/10 text-lp-accent"
                           : "border-lp-border bg-lp-surface hover:bg-lp-surface2 text-lp-text2"
                       }`}
                     >
-                      Seasonal Event
+                      <span className="hidden sm:inline">Seasonal </span>Event
                     </button>
                     <button
                       onClick={() => setSourceType("manual")}
-                      className={`flex-1 rounded-lg border py-2 text-sm font-bold transition ${
+                      className={`rounded-lg border py-2 px-1 text-xs sm:text-sm font-bold transition text-center ${
                         sourceType === "manual"
                           ? "border-lp-accent bg-lp-accent/10 text-lp-accent"
                           : "border-lp-border bg-lp-surface hover:bg-lp-surface2 text-lp-text2"

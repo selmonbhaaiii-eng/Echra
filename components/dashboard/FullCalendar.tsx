@@ -115,48 +115,56 @@ export function FullCalendar({ posts = [], businessId }: { posts?: CalendarPost[
           </div>
         </div>
 
-        <div className="p-6">
-          <div className="mb-2 grid grid-cols-7 gap-2">
-            {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day, i) => (
-              <div key={i} className="text-center text-xs font-bold uppercase tracking-widest text-lp-text3">
-                {day}
+        <div className="p-3 sm:p-6">
+          <div className="mb-2 grid grid-cols-7 gap-1 sm:gap-2">
+            {[
+              { s: "M", f: "Mon" },
+              { s: "T", f: "Tue" },
+              { s: "W", f: "Wed" },
+              { s: "T", f: "Thu" },
+              { s: "F", f: "Fri" },
+              { s: "S", f: "Sat" },
+              { s: "S", f: "Sun" },
+            ].map((day, i) => (
+              <div key={i} className="text-center text-[11px] sm:text-xs font-bold uppercase tracking-widest text-lp-text3 py-1">
+                <span className="sm:hidden">{day.s}</span>
+                <span className="hidden sm:inline">{day.f}</span>
               </div>
             ))}
           </div>
 
-          <div className="grid grid-cols-7 gap-2">
+          <div className="grid grid-cols-7 gap-1 sm:gap-2">
             {Array.from({ length: startDay }).map((_, i) => (
-              <div key={`empty-${i}`} className="min-h-[80px] rounded-lg border border-transparent" />
+              <div key={`empty-${i}`} className="min-h-[52px] sm:min-h-[80px] rounded-lg border border-transparent" />
             ))}
 
             {Array.from({ length: daysInMonth }).map((_, i) => {
               const day = i + 1;
               const isToday = isCurrentMonth && day === today.getDate();
-              // For simplicity, we just show the first post on that day if multiple exist
               const post = currentMonthPosts.find((p) => p.day === day);
               const holiday = monthHolidays.find((h) => h.day === day);
 
               return (
                 <div
                   key={day}
-                  className={`flex min-h-[80px] cursor-pointer flex-col gap-1 rounded-lg border p-2 transition ${isToday
+                  className={`flex min-h-[52px] sm:min-h-[80px] cursor-pointer flex-col gap-0.5 sm:gap-1 rounded-lg border p-1 sm:p-2 transition ${isToday
                       ? "border-lp-accent/40 bg-lp-accent/5"
                       : "border-lp-border bg-lp-surface2 hover:border-lp-border2 hover:bg-lp-surface3"
                     }`}
                 >
-                  <span className={`text-xs font-bold ${isToday ? "text-lp-accent" : "text-lp-text2"}`}>
+                  <span className={`text-[11px] sm:text-xs font-bold ${isToday ? "text-lp-accent" : "text-lp-text2"}`}>
                     {day}
                   </span>
 
                   {holiday && (
-                    <div className="mt-1 truncate rounded px-1.5 py-1 text-[10px] font-medium bg-purple-500/15 text-purple-400">
-                      🎉 {holiday.name}
+                    <div className="truncate rounded px-1 py-0.5 text-[9px] sm:text-[10px] font-medium bg-purple-500/15 text-purple-400">
+                      <span className="hidden sm:inline">🎉 </span>{holiday.name}
                     </div>
                   )}
 
                   {post && (
                     <div
-                      className={`mt-1 truncate rounded px-1.5 py-1 text-[10px] font-medium ${post.type === "review"
+                      className={`truncate rounded px-1 py-0.5 text-[9px] sm:text-[10px] font-medium ${post.type === "review"
                           ? "bg-emerald-500/15 text-emerald-500"
                           : post.type === "seasonal"
                             ? "bg-orange-500/15 text-orange-500"
@@ -174,7 +182,7 @@ export function FullCalendar({ posts = [], businessId }: { posts?: CalendarPost[
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-6 border-t border-lp-border px-6 py-4 text-xs font-medium text-lp-text3">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-6 border-t border-lp-border px-4 py-3 sm:px-6 sm:py-4 text-xs font-medium text-lp-text3">
           <div className="flex items-center gap-2">
             <span className="size-2 rounded bg-purple-500" /> Holiday
           </div>

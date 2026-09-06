@@ -52,7 +52,7 @@ export function AiActionsDashboard({ businessId }: { businessId: string }) {
 
   if (loading) {
     return (
-      <div className="mt-8 rounded-xl border border-lp-border bg-lp-surface p-6 animate-pulse">
+      <div className="mt-8 rounded-xl border border-lp-border bg-lp-surface p-4 sm:p-6 animate-pulse">
         <div className="h-6 w-40 bg-lp-surface3 rounded mb-5" />
         <div className="grid gap-3 sm:grid-cols-2">
           {[1, 2, 3, 4].map(i => (
@@ -66,11 +66,11 @@ export function AiActionsDashboard({ businessId }: { businessId: string }) {
   if (actions.length === 0) return null;
 
   return (
-    <div className="mt-8 rounded-xl border border-lp-accent/20 bg-gradient-to-br from-lp-surface to-lp-surface2 p-6">
+    <div className="mt-8 rounded-xl border border-lp-accent/20 bg-gradient-to-br from-lp-surface to-lp-surface2 p-4 sm:p-6">
       <div className="flex items-center justify-between mb-5">
         <div className="flex items-center gap-2">
           <Sparkles className="size-5 text-lp-accent" />
-          <h2 className="font-heading text-xl font-bold text-lp-text">Today's Actions</h2>
+          <h2 className="font-heading text-lg sm:text-xl font-bold text-lp-text">Today's Actions</h2>
         </div>
         <button
           onClick={() => fetchActions(true)}
@@ -90,14 +90,14 @@ export function AiActionsDashboard({ businessId }: { businessId: string }) {
           if (action.action_type === "queue") href = "/dashboard/queue";
 
           return (
-            <div key={i} className={`flex items-center justify-between gap-4 rounded-lg border ${colorMap[action.icon_color]} p-4 transition-colors hover:brightness-110`}>
-              <div className="flex items-center gap-3">
+            <div key={i} className={`flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 rounded-lg border ${colorMap[action.icon_color]} p-3.5 sm:p-4 transition-colors hover:brightness-110`}>
+              <div className="flex items-center gap-3 min-w-0">
                 <div className={`size-2.5 rounded-full ${dotColorMap[action.icon_color]} shrink-0 shadow-[0_0_8px_rgba(255,255,255,0.3)]`} />
-                <p className="text-sm font-medium text-lp-text">{action.text}</p>
+                <p className="text-xs sm:text-sm font-medium text-lp-text leading-snug">{action.text}</p>
               </div>
               <Link
                 href={href}
-                className="shrink-0 flex items-center gap-1.5 rounded-md bg-lp-bg/50 px-3 py-1.5 text-xs font-bold text-lp-text hover:bg-lp-bg transition-colors"
+                className="shrink-0 self-end sm:self-auto flex items-center gap-1.5 rounded-md bg-lp-bg/50 px-3 py-1.5 text-xs font-bold text-lp-text hover:bg-lp-bg transition-colors"
               >
                 {action.button_text}
                 <ArrowRight className="size-3" />

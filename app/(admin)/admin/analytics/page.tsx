@@ -1,4 +1,4 @@
-﻿import { createServiceRoleClient } from "@/lib/supabase/server";
+import { createServiceRoleClient } from "@/lib/supabase/server";
 import { AnalyticsClient } from "./AnalyticsClient";
 import {
   Sparkles,
@@ -313,7 +313,7 @@ export default async function AnalyticsPage() {
     { label: "Total AI Replies", value: aiRepliesGenCount, icon: "MessageSquareText", accent: "bg-lp-accent2" },
     { label: "GBP Published", value: gbpPublishedCount, icon: "RadioTower", accent: "bg-lp-accent3" },
     { label: "Reviews Synced", value: reviewsSyncedCount, icon: "MessageSquareText", accent: "bg-lp-accent" },
-    { label: "Total Cost", value: `â‚¹${Math.round(totalCostInr)}`, icon: "DollarSign", accent: "bg-lp-accent3" },
+    { label: "Total Cost", value: `₹${Math.round(totalCostInr)}`, icon: "DollarSign", accent: "bg-lp-accent3" },
     { label: "Google API Calls", value: `${apiPercentage}%`, icon: "RadioTower", accent: "bg-lp-red" },
   ];
 

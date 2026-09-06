@@ -19,7 +19,7 @@ export function ProfileSettingsTabs({
   return (
     <div className="space-y-6">
       {/* Tabs Menu */}
-      <div className="flex border-b border-lp-border gap-2 pb-px">
+      <div className="flex border-b border-lp-border gap-2 pb-px overflow-x-auto hide-scrollbar">
         <button
           onClick={() => setActiveTab("profile")}
           className={`flex items-center gap-2 px-4 py-2.5 text-sm font-bold border-b-2 transition ${

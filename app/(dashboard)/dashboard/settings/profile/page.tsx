@@ -28,10 +28,10 @@ export default async function ProfileSettingsPage() {
   }
 
   return (
-    <div className="max-w-3xl mx-auto py-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold font-syne text-white mb-2">Business Profile</h1>
-        <p className="text-lp-text2">
+    <div className="max-w-3xl mx-auto py-4 sm:py-8">
+      <div className="mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-3xl font-bold font-syne text-white mb-2">Business Profile</h1>
+        <p className="text-xs sm:text-sm text-lp-text2">
           Manage your business details, tone, and preferences. These settings personalize your AI-generated posts and replies.
         </p>
       </div>

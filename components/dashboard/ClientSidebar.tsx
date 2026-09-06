@@ -12,6 +12,7 @@ import {
   RadioTower,
   Settings,
   Users,
+  X,
   Zap,
 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
@@ -36,9 +37,10 @@ interface NavItemProps {
     dot?: boolean;
     badge?: string | number | null;
   };
+  onClick?: () => void;
 }
 
-function NavItem({ item }: NavItemProps) {
+function NavItem({ item, onClick }: NavItemProps) {
   const pathname = usePathname();
   const Icon = item.icon;
   const isActive = pathname === item.href;
@@ -46,6 +48,7 @@ function NavItem({ item }: NavItemProps) {
   return (
     <Link
       href={item.href}
+      onClick={onClick}
       className={`flex h-9 items-center gap-2 rounded-lg px-3 text-sm font-medium transition ${
         isActive
           ? "bg-lp-accent/10 text-lp-accent"
@@ -67,11 +70,15 @@ function NavItem({ item }: NavItemProps) {
 export function ClientSidebar({ 
   showAgencyClients = false,
   pendingCount = 0,
-  contextPercent = 0
+  contextPercent = 0,
+  isOpen = false,
+  onClose,
 }: { 
   showAgencyClients?: boolean;
   pendingCount?: number;
   contextPercent?: number;
+  isOpen?: boolean;
+  onClose?: () => void;
 }) {
   const router = useRouter();
 
@@ -83,18 +90,34 @@ export function ClientSidebar({
   }
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-40 flex w-[220px] flex-col border-r border-lp-border bg-lp-surface px-3 py-4">
-      <Link href="/dashboard" className="mb-8 flex items-center gap-3 px-2">
-        <div className="flex size-10 items-center justify-center rounded-lg bg-lp-accent text-lp-bg">
-          <Zap className="size-5 fill-current" />
-        </div>
-        <div>
-          <div className="font-heading text-lg font-extrabold text-lp-text">Echra</div>
-          <div className="text-xs text-lp-text2">Owner Console</div>
-        </div>
-      </Link>
+    <aside
+      className={`fixed inset-y-0 left-0 z-50 flex w-[80vw] max-w-[280px] lg:w-[220px] flex-col border-r border-lp-border bg-lp-surface px-3 py-4 transition-transform duration-200 ease-in-out ${
+        isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full lg:translate-x-0"
+      }`}
+    >
+      <div className="mb-8 flex items-center justify-between px-2">
+        <Link href="/dashboard" onClick={onClose} className="flex items-center gap-3">
+          <div className="flex size-10 items-center justify-center rounded-lg bg-lp-accent text-lp-bg">
+            <Zap className="size-5 fill-current" />
+          </div>
+          <div>
+            <div className="font-heading text-lg font-extrabold text-lp-text">Echra</div>
+            <div className="text-xs text-lp-text2">Owner Console</div>
+          </div>
+        </Link>
+        {onClose && (
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex size-8 items-center justify-center rounded-lg border border-lp-border bg-lp-surface2 text-lp-text2 transition hover:bg-lp-surface3 hover:text-lp-text lg:hidden"
+            aria-label="Close navigation menu"
+          >
+            <X className="size-4" />
+          </button>
+        )}
+      </div>
 
-      <div className="flex flex-1 flex-col gap-7">
+      <div className="flex flex-1 flex-col gap-7 overflow-y-auto">
         <div className="space-y-2">
           <p className="px-3 text-[10px] font-bold uppercase tracking-widest text-lp-text3">Main</p>
           <nav className="space-y-1">
@@ -103,7 +126,7 @@ export function ClientSidebar({
               if (currentItem.label === "Post Queue") {
                 currentItem.badge = pendingCount > 0 ? pendingCount.toString() : undefined;
               }
-              return <NavItem key={currentItem.href} item={currentItem} />;
+              return <NavItem key={currentItem.href} item={currentItem} onClick={onClose} />;
             })}
           </nav>
         </div>
@@ -111,7 +134,7 @@ export function ClientSidebar({
         {showAgencyClients ? (
           <div className="space-y-2">
             <p className="px-3 text-[10px] font-bold uppercase tracking-widest text-lp-text3">Grow</p>
-            <NavItem item={{ label: "Clients", href: "/dashboard/clients", icon: Users }} />
+            <NavItem item={{ label: "Clients", href: "/dashboard/clients", icon: Users }} onClick={onClose} />
           </div>
         ) : null}
 
@@ -121,7 +144,7 @@ export function ClientSidebar({
           </p>
           <nav className="space-y-1">
             {settingsNav.map((item) => (
-              <NavItem key={item.label} item={item} />
+              <NavItem key={item.label} item={item} onClick={onClose} />
             ))}
           </nav>
         </div>
@@ -130,6 +153,7 @@ export function ClientSidebar({
       <div className="space-y-3 border-t border-lp-border pt-4">
         <Link 
           href="/dashboard/settings/profile" 
+          onClick={onClose}
           className="flex w-full items-center gap-2 rounded-xl border border-lp-border bg-lp-surface2 p-3 text-left transition hover:bg-lp-surface3"
         >
           <span className="flex size-8 items-center justify-center rounded-lg bg-lp-accent2/20 text-xs font-bold text-lp-accent2">
@@ -138,7 +162,7 @@ export function ClientSidebar({
           <span className="min-w-0 flex-1">
             <span className="block truncate text-sm font-bold text-lp-text mb-1">Your Business</span>
             
-            {/* Progress Bar added here */}
+            {/* Progress Bar */}
             <div className="flex items-center gap-2 mt-0.5">
               <div className="flex-1 h-1.5 bg-lp-surface3 rounded-full overflow-hidden">
                 <div 

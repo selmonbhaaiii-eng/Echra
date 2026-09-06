@@ -53,7 +53,7 @@ export function MiniCalendar({ posts = [] }: { posts?: CalendarPost[] }) {
   const monthHolidays = getHolidaysForMonth(currentDate.getMonth());
 
   return (
-    <div className="rounded-xl border border-lp-border bg-lp-surface p-6">
+    <div className="rounded-xl border border-lp-border bg-lp-surface p-4 sm:p-6">
       <div className="mb-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <CalendarIcon className="size-5 text-lp-accent" />

@@ -163,7 +163,7 @@ export function GenerateReplyModal({
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-6">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6">
               <div className="space-y-6">
                 
                 <div className="rounded-xl border border-lp-border bg-lp-surface2 p-4">
